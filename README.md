@@ -12,7 +12,9 @@
     2. [Изменить конфиг](#config_db)
 0. [Добавить обьект](#create_obj)
 1. [Удалить обьект по параметру](#del_obj)
-2. [Обновить обьект по параметру](#update_obj)
+1. [Обновление данных](#update_obj)
+    1. [Обновить обьект по параметру](#update_obj)
+    2. [Обновить поле](#update_field)
 3. [Выбрать обьект/обьекты по параметру](#select_obj)
 
 
@@ -113,6 +115,47 @@ db.update_obj('examples', 'id', 2, 'log', false)
     }]
 }
 ```
+
+
+## update_field
+> Эта функция позволяет удобно обновить поле в обьекте
+
+входные параметры: `name`, `key`, `value`
+
+```js
+// name - название обьекта => data[name]
+```
+```js
+// key - поле которое надо обновить => data[name][key]
+```
+```js
+// value - новое значение => data[name][key] = value
+```
+Например:
+
+```js
+db.update_obj('example', 'stages', 5)
+```
+Было:
+```json
+{   
+    "project_status": {
+        "stages": 10,
+        "actual_stage": 3
+    }
+}
+```
+Стало после выполнения функции:
+```json
+{   
+    "project_status": {
+        "stages": 5,
+        "actual_stage": 3
+    }
+}
+```
+
+
 
 
 ## select_obj 
